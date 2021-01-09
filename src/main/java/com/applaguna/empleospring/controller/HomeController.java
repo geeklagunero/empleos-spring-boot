@@ -1,5 +1,6 @@
 package com.applaguna.empleospring.controller;
 
+import com.applaguna.empleospring.model.Vacante;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,5 +43,17 @@ public class HomeController {
         model.addAttribute("empleos", lista);
 
         return "listado";
+    }
+
+    @GetMapping("/detalle")
+    public String mostrarDetalle(Model model) {
+        Vacante vacante = new Vacante();
+        vacante.setNombre("Ingeniero en comunicaciones");
+        vacante.setDescripcion("Se solicita ing para soprote tecnico en redes");
+        vacante.setFecha(new Date());
+        vacante.setSalario(98000.0);
+        model.addAttribute("vacante", vacante);
+
+        return "detalle";
     }
 }
